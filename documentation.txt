@@ -1,0 +1,25 @@
+Class CSession
+	function user_login()				vérifie si le user est valide	
+	function user_add()				ajoute le nouvel user dans la table
+	function send_validation()			envoi un email de validation
+	function user_exist()				vérifie si l'user est dans la table
+	function set_session($email, $Nom, $Prenom, $valid)	set les variables de session
+	function user_list()				liste les users  (réservé superuser)
+	function get_Profile()				recupère les info de sessions
+	function kill_session()				stop la session et les variables de session
+	static function doc()				return le contenu du fichier documentation
+
+
+Class CInscription
+	send_validation($info_user)			envoi un email de validation
+	function set_key_validation()			crée la clé de validation d'inscription
+	function get_key_validation()			recupère la clé de validation d'inscription
+	function send_email($email, $sujet, $message, $from)
+	
+	
+//send_validation
+//cle_validation
+//send_email
+//validation_user
+//reset_password
+//remove_user
