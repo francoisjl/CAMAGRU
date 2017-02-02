@@ -1,10 +1,10 @@
 Class CSession
-	function user_login()				vérifie si le user est valide	
-	function user_add()				ajoute le nouvel user dans la table
+	function login_usr()				vérifie si le user est valide	
+	function add_usr()				ajoute le nouvel user dans la table
 	function send_validation()			envoi un email de validation
-	function user_exist()				vérifie si l'user est dans la table
+	function exist_usr()				vérifie si l'user est dans la table
 	function set_session($email, $Nom, $Prenom, $valid)	set les variables de session
-	function user_list()				liste les users  (réservé superuser)
+	function list_usr()				liste les users  (réservé superuser)
 	function get_Profile()				recupère les info de sessions
 	function kill_session()				stop la session et les variables de session
 	static function doc()				return le contenu du fichier documentation

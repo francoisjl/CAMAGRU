@@ -18,9 +18,13 @@ print ($session_usr_exist->user_exist());
 exit();*/
 print ('sess '.$_SESSION['valide']);
 if ($_SESSION['valide'] == 'ok') 
-{header('Location: home.php');}
+{
+	header('Location: home.php');
+}
 else
-{header('Location: index.php');}
+{
+	header('Location: index.php');
+}
 
 print('<div id="main">');
 
