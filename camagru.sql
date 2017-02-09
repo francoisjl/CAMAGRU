@@ -2,10 +2,10 @@
 -- version 4.6.0
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Mer 08 Février 2017 à 17:53
--- Version du serveur :  5.7.11
--- Version de PHP :  7.0.0
+-- Host: localhost
+-- Generation Time: Feb 08, 2017 at 04:30 PM
+-- Server version: 5.7.11
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,67 +17,64 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `camagru`
+-- Database: `CAMAGRU`
 --
-CREATE DATABASE IF NOT EXISTS `camagru` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `camagru`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tbl_camagru`
+-- Table structure for table `initial_camagru`
 --
 
-CREATE TABLE `tbl_camagru` (
+CREATE TABLE `initial_camagru` (
   `Id` int(11) NOT NULL,
-  `Nom` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `Prenom` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `Password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `Nom` varchar(100) NOT NULL,
+  `Prenom` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `Password` varchar(20) NOT NULL,
   `Confirm` int(11) NOT NULL DEFAULT '0',
-  `Keyuser` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `Keyuser` varchar(50) NOT NULL,
   `Cpt_reinit` int(11) NOT NULL DEFAULT '5',
   `Questionsecrete` int(11) NOT NULL,
-  `Reponsesecrete` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `Info` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Reponsesecrete` varchar(50) NOT NULL,
+  `Info` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Contenu de la table `tbl_camagru`
+-- Dumping data for table `initial_camagru`
 --
 
-INSERT INTO `tbl_camagru` (`Id`, `Nom`, `Prenom`, `email`, `Password`, `Confirm`, `Keyuser`, `Cpt_reinit`, `Questionsecrete`, `Reponsesecrete`, `Info`) VALUES
-(1, 'LIEVRE', 'Dominique', 'dominique@lievre.net', 'b913d5bbb8e461c2c5961cbe0edcdadfd29f068225ceb37da6defcf89849368f8c6c2eb6a4c4ac75775d032a0ecfdfe8550573062b653fe92fc7b8fb3b7be8d6', 1, '589b460c5244c', 5, 3, 'vélo', 'sans'),
-(2, 'PASQUALINI', 'thierry', 'te42pe@gmail.com', 'test', 0, '589b3c7428e19', 5, 3, 'cheval', 'info'),
-(3, 'dupond', 'louis', 'dupond@lievre.net', 'test', 0, '', 5, 0, '', 'free'),
-(4, 'DURAND', 'robert', 'durand@lievre.net', 'test', 0, '', 5, 0, '', 'free'),
-(5, 'PINGUET', 'Dominique', 'dominique@photeam.com', 'test', 0, '589a0199da59a', 5, 0, '', 'info'),
-(6, 'PASQUALI', 'thierry', 'tpasqual@student.42.fr', 'test', 1, 'sdfgsdhf', 5, 0, '', 'info'),
-(7, 'lievre', 'Dominique', 'portable@photeam.com', 'test', 0, 'sdfgsdhf', 5, 0, '', 'info'),
-(10, '', '', 'test@lievre.net', '', 0, 'sdfgsdhf', 5, 0, '', 'info'),
-(12, 'BERTRAND', 'merci', 'merci@adopteunvieux.com', 'test', 0, '5899e67abfeb9', 5, 0, '', 'Info'),
-(17, 'UTF8', 'titi', 'utf8@yopmail.com', 'b913d5bbb8e461c2c5961cbe0edcdadfd29f068225ceb37da6defcf89849368f8c6c2eb6a4c4ac75775d032a0ecfdfe8550573062b653fe92fc7b8fb3b7be8d6', 0, '589b548c55076', 5, 4, 'vÃ©lo', 'Info');
+INSERT INTO `initial_camagru` (`Id`, `Nom`, `Prenom`, `email`, `Password`, `Confirm`, `Keyuser`, `Cpt_reinit`, `Questionsecrete`, `Reponsesecrete`, `Info`) VALUES
+(1, 'FRANCOIS', 'Jean-luc', 'jfrancoi@student.42.fr', 'test', 1, '589aea329a2cc', 5, 3, 'bad', 'sans'),
+(2, 'DUPEYROUX', 'Franck', 'fdupeyro@student.42.fr', 'test', 0, '589a082066e91', 5, 3, 'cheval', 'info'),
+(3, 'dupond', 'louis', 'dupond@student.42.fr', 'test', 0, '', 5, 0, '', 'free'),
+(4, 'DURAND', 'robert', 'durand@student.42.fr', 'test', 0, '', 5, 0, '', 'free'),
+(5, 'LIEVRE', 'Dominique', 'dominique@photeam.com', 'test', 0, '589a0199da59a', 5, 0, '', 'info'),
+(6, 'PASQUALI', 'Thierry', 'tpasqual@student.42.fr', 'test', 1, 'sdfgsdhf', 5, 0, '', 'info'),
+(7, 'AZZOUT', 'Hischam', 'hazzout@student.42.fr', 'test', 0, 'sdfgsdhf', 5, 0, '', 'info'),
+(10, 'AZRIA', 'Bruno', 'bazria@student.42.fr', '', 0, 'sdfgsdhf', 5, 0, '', 'info'),
+(12, 'BERTRAND', 'merci', 'merci@adopteunvieux.com', 'test', 0, '5899e67abfeb9', 5, 0, '', 'Info');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `tbl_camagru`
+-- Indexes for table `initial_camagru`
 --
-ALTER TABLE `tbl_camagru`
+ALTER TABLE `initial_camagru`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `tbl_camagru`
+-- AUTO_INCREMENT for table `initial_camagru`
 --
-ALTER TABLE `tbl_camagru`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE `initial_camagru`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
