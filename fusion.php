@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)) {session_start();}
+require_once('includes_session.php');
+$CSession = new CSession();
 
 $stamp = mktime();
 $folder_fond = 'fonds/';
@@ -16,7 +18,6 @@ $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
 $file = $upload_dir . $stamp . ".png";
 $success = file_put_contents($file, $data);
-//print $success ? $file : 'Unable to save the file.';
 
 if (!$success) exit;
 // fusion de l'image et du fond 
@@ -35,7 +36,12 @@ $src_w = $width_dessous;
 $src_h = $height_dessous;
 
 $result = imagecopy ( $dessous, $dessus, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h );
-
 imagepng($dessous, $file); // on ecrit l'image traitee $dest vers le fichier $file
 
+// insertion dans la base de l'image
+$Id = $_SESSION['Id'];
+$id_photo = $stamp;
+
+$retour = $CSession->image_add($id_photo, $Id);// ajoute une image dans la base
+$CSession->write_log('add image base : '.$retour.' ' .$id_photo. ' '. $Id);
 ?>

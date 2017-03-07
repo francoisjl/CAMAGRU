@@ -3,11 +3,14 @@
 require_once('includes_session.php');
 require_once('head.php');
 require_once('header.php');
+$content = '';
 
 $CForm = new CForm;
+$error_field = '';
 
 $aff_formulaire = 'yes';
-print '....'.$_POST['Question'].'<br>';
+
+
 
 if (isset($_POST['Envoyer']) == TRUE) // controle des champs
 	{
@@ -18,6 +21,7 @@ if (isset($_POST['Envoyer']) == TRUE) // controle des champs
 		$TabFormChk["Reponse"] = "Réponse";
 
 		$error_field = $CForm->InputTextChk($TabFormChk);
+		if 	($_POST['Password'] != $_POST['Passwordbis']) $error_field .= "Les mots de passe ne sont pas identiques";
 		
 	}
 
@@ -46,13 +50,13 @@ if (isset($_POST['Envoyer']) == TRUE and !$error_field )
 
 	if ($user_exist == 'no')
 	{
-		$content = 'Utilisateur à créer dans la base<br />'; 
-		$class_msg = 'content';
+		//$content = 'Utilisateur à créer dans la base<br />'; 
+		//$class_msg = 'content';
 		$action = $CSession->user_add();
-	//$action = 'ok'; /////// a remettre apres validation
+
 		if ($action == 'user_add' ) 
 		{
-			$content .= 'Utilisateur validé dans la base';
+			$content .= 'Utilisateur créer et validé dans la base';
 			$class_msg = 'content';
 		//if ($CInscription->send_validation($_SESSION) == 'ok'){$print->content('send ok');}
 			$content .= '<br />Un mail de validation de compte vient de vous être envoyé à '.strip_tags($_POST['email']).'<br /> pour finaliser votre inscription';
@@ -79,6 +83,12 @@ if ( $aff_formulaire == 'yes' )
 {
 	$TabForm = array();
 
+	if (!isset($_POST['Nom'])) $_POST['Nom'] = '';
+	if (!isset($_POST['Prenom'])) $_POST['Prenom'] = '';
+	if (!isset($_POST['email'])) $_POST['email'] = '';
+	if (!isset($_POST['Reponse'])) $_POST['Reponse'] = '';
+	if (!isset($_POST['Question'])) $_POST['Question'] = '0';
+
 	$CForm = new CForm;
 	$TabForm[] = $CForm->Form('register.php', 'Form', 'POST');
 	$TabForm[] = $CForm->InputLabel("Votre Nom *", "LabelNom", "Notused");// InputLabel(new = ($labelTitre, $id, $labelFor)
@@ -100,7 +110,7 @@ if ( $aff_formulaire == 'yes' )
 	$Tabquestion[] = "Votre nom de jeune fille";
 	$Tabquestion[] = "Votre sport favori";*/
 	$TabForm[] = $CForm->InputLabel("Question secrète *", "LabelQuestion", "Notused");
-	$TabForm[] = $CForm->InputSelect("Question secrète ", "Question", $Tabquestion, '0', '*');
+	$TabForm[] = $CForm->InputSelect("Question secrète ", "Question", $Tabquestion, $_POST['Question'], '*');
 	$TabForm[] = $CForm->InputLabel("Réponse *", "LabelReponse", "Notused");
 	$TabForm[] = $CForm->InputText("Reponse", "Reponse", $_POST['Reponse'], '*');
 

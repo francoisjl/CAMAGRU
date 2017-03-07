@@ -1,8 +1,10 @@
 <?php
-session_start();
 require_once('includes_session.php');
 $aff_formulaire = 'yes';
 $CForm = new CForm;
+$CPrint = new CPrint();
+$content = '';
+$error_field = '';
 
 if (isset($_POST['Envoyer']) == TRUE) // controle des champs
     {
@@ -49,17 +51,16 @@ require_once('head.php');
 require_once('header.php');
 print('<div id="main">');
 
-$CPrint = new CPrint();
 $CPrint->titre('Login');
 if ($content) $CPrint->content($content, $class_msg);
 
 if ( $aff_formulaire == 'yes' )
     {
     $TabForm = array();
-
+    if (isset($_POST['email']) ) $post_email = $_POST['email']; else $post_email = '';
     $TabForm[] = $CForm->Form('login.php', 'Form', 'POST');
     $TabForm[] = $CForm->InputLabel("Votre Mail", "LabelMail", "Mail");
-    $TabForm[] = $CForm->InputMail("Votre Mail", "email", $_POST['email'], '*');
+    $TabForm[] = $CForm->InputMail("Votre Mail", "email", $post_email, '*');
     $TabForm[] = $CForm->InputLabel("Password", "LabelPassword", "LabelPassword");
     $TabForm[] = $CForm->InputPassword("Password", "Password", '*'); // InputPassword($Titre, $id)
     $TabForm[] = $CForm->Submit("Envoyer", "Envoyer");

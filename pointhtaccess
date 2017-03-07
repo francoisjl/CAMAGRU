@@ -1,0 +1,26 @@
+RedirectMatch 404 /config/database.php
+Redirect 404 /z$
+Redirect 404 /banner_404.html
+Redirect 404 /head.php 
+Redirect 404 /header.php
+Redirect 404 /footer.php
+Redirect 404 /home.php
+Redirect 404 /galerie.php
+Redirect 404 /logoff.php
+Redirect 404 /profile.php
+Redirect 404 /superuser.php
+Redirect 404 /Cform.php
+Redirect 404 /CInscription.class.php
+Redirect 404 /CSession.class.php
+Redirect 404 /CPrint.class.php
+
+Redirect 404 /includes_session.php
+Redirect 404 /includes.php
+
+ErrorDocument 404 error.php
+ErrorDocument 500 error.php
+ErrorDocument 400 error.php
+ErrorDocument 401 error.php
+ErrorDocument 403 error.php
+
+Options -Indexes

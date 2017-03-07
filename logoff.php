@@ -11,9 +11,14 @@ else
 		print('<div id="main">');
 		$CSession = new CSession();
 		$CPrint = new CPrint();
+		$msg = 'Connecté depuis '.round((time() - $_SESSION['Logstart'])/60 ). ' minutes'; 
 		if ( $CSession->kill_session() == 'ok') 
 			{ 
-				$CPrint->titre('Votre session est terminée');
+				
+				  print '<br />'.'<br />';
+				  $CPrint->content($msg, 'content');
+				  $CPrint->titre('Votre session est terminée');
+
 			}
 			else
 			{
@@ -25,6 +30,8 @@ else
 		print '
     	<script  type="text/javascript">
     	var elem = document.querySelector(\'#header_user\');
+    	elem.style.display = "none";
+    	var elem = document.querySelector(\'#header_menu\');
     	elem.style.display = "none";
     	</script>';
     	include ('footer.php');

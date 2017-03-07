@@ -1,7 +1,6 @@
 <?php
 require_once('includes_session.php');
 
-
 if ($_SESSION['valide'] == 'ok')
 {
   $session = new CSession();
@@ -16,7 +15,8 @@ if ($_SESSION['valide'] == 'ok')
   //$print->profil('Profile Utilisateur', $TabProfil);
 
   $CPrint->titre('Profile Utilisateur');
-  $CPrint->content_array($TabProfil, 'form');
+  $CPrint->content_array($_SESSION, 'content_left', 'content_left');
+  //$CPrint->content( "Connecté depuis  ".round((time() - $_SESSION['Logstart'])/60 )  ."minutes", 'content_left', 'content_left'); // -time()
 
   print('</div>'); 
   include ('footer.php');

@@ -1,0 +1,127 @@
+CSession.class.php   <b>CSession.class.php</bCS-3   class csession // ***** class 
+CS-11   // **********  gestion de l'utilisateur ***********
+CS-12         __construct() // initialise les info de la base de donnees 
+CS-20         host() // précise le nom du serveur pour l'envoi des liens par mail
+CS-31         user_login() // check si login mot de passe sont valides
+CS-63             user_info($email_key, $origin) // lit les informations de l'user
+CS-97         maj_key($email) // met a jour la key de reinit
+CS-121         user_exist($email) // check si user existe
+CS-141         userkey_exist($key) // check si la key existe pour traitement
+CS-158             user_add() // ajoute un user 
+CS-187         user_add_confirm($key) // confirmation de l'inscription par l'user
+CS-210        user_pass_modify($email, $pass) // modifie le password de l'user
+CS-231         user_list($class1, $class2) // reserved superuser
+CS-272         set_session($email, $nom, $prenom, $confirm, $id) // set les variables de session
+CS-286         get_profile() // récupere les infos de l'utilisateur
+CS-298   // **********  divers ***********
+CS-299        user_pass_hash($pass) // codage whirlpool du password
+CS-304        secure($var) // supprime les tag html
+CS-314        ismajuscule($var)// verifie si presence majuscule pour les mauvais password
+CS-325       *  quotesep($val)// securise les variables dans sql, avec separateur
+CS-330       *  quote($val)// securise le passage des variables dans la requete sql, sans separateur
+CS-335        quote_addslashes($tbl) // ajoute / aux chaines vers sql
+CS-350         kill_session() // on tue la session et les variables
+CS-356         write_log($err_txt) // ecriture dans le fichier log
+CS-366             write_doc($tbl) // cree le fichier superuser/doc.txt
+CS-378         read_log($file) // lecture d'un fichier
+CS-393   //*********   gestion des images dans la base *********
+CS-395        image_add($id_photo, $id)// ajoute une image dans la base
+CS-412        image_getid($name_photo)// ajoute une image dans la base
+CS-422               // qwertyecho '******'.$retour.'***';            
+CS-433         comment_add($name_photo, $iduser_comment, $comment)// ajoute un commentaire a une image dans la base
+CS-504         like_add($name_photo, $iduser_like)// ajoute un commentaire a une image dans la base
+CS-552        is_user_cmtlike($name_photo, $iduser_comment)// check si l'user a deja commente ou like
+CS-587             images_galerie() // lit toutes les images pour la galerie
+CS-608         image_comment($name_photo) // lit les commentaires d'une image
+CS-626         get_owner_image($name_photo) // identifie owner d'une image
+CS-644         tbl_users_name() // lit les commentaires d'une image
+CS-660             get_email_owner_image($name_photo) // identifie owner d'une image
+CS-678             tbl_users_mail() // lit les commentaires d'une image
+CS-694         image_like_count($name_photo) // compte le nb de like des comment
+CS-709          image_like_count_set($name_photo) // met a jour le nb de like d'une image
+CS-736             image_nb_liked($id_img) // nb de like d'une image
+CS-751       //***** structure *****
+CS-753         __destruct() // on efface la connexion a la base
+CS-760        __tostring() //print ($form);
+CS-765        __invoke() //print ($form());
+CS-770   static  doc()
+CInscription.class.php   <b>CInscription.class.php</bCI-1   class cinscription // ***** class
+CI-3         __construct()
+CI-10         send_validation($email, $prenom, $nom, $keyuser) // envoi un email de validation 
+CI-30         send_reinitialisation($email) //    renvoi un mail de réinitialisation
+CI-58         set_key_validation() // crée la key de validation d'inscription
+CI-67         get_key_validation() // recupère la key de validation d'inscription
+CI-72       /*  set_key_reinit($email)
+CI-82         send_email($email, $sujet, $message, $from) // envoi un email
+CI-115       // ***** structure *****
+CI-116         __destruct()
+CI-121         __tostring() //print ($form);
+CI-126         __invoke() //print ($form());
+CI-131       static  doc() // doc 
+CPrint.class.php   <b>CPrint.class.php</bCP-5         __construct()
+CP-10         __destruct()
+CP-15         __tostring() //print ($form);
+CP-20         __invoke() //print ($form());
+CP-25       static  doc()
+CP-30          form($titre, $tab) // affiche le form
+CP-46          profil($titre, $tab) // affiche les info du user
+CP-58           content($info, $class) // affiche avec p et class
+CP-64         content_array($tab, $class1, $class2) // affiche un tableau à 2 dimensions titre et contenu avec class css
+CP-74          link($href, $text, $class, $target, $sep) // affiche un lien avec balise <a>
+CP-82          div($id, $class) // affiche un div avec id et class
+CP-89          div_end() // ferme la balise du div
+CP-94          titre($info) // affiche un titre h2
+CForm.class.php   <b>CForm.class.php</bCF-7         __construct()
+CF-13         __destruct()
+CF-18         __tostring() //print ($form);
+CF-23         __invoke() //print ($form());
+CF-28       static  doc()
+CF-33          formtitre($titre)
+CF-40          form($uri, $class, $method )
+CF-46          inputlabel($labeltitre, $id, $labelfor)
+CF-51          inputtext($titre, $id, $post, $required)// , $required a ajouter
+CF-57          inputmail($titre, $id, $post, $required)
+CF-63          inputselect($titre, $id, $tbl, $selected, $required)
+CF-76          inputpassword($titre, $id, $required)
+CF-83          submit($titre, $id)
+CF-89          inputtextchk($tbl)// 
+CF-115          ctrl_password($tbl)// form($titre, $tab)
+CF-125         inputemailchk($email)// non utilisé
+ajax_usr.php   <b>ajax_usr.php</bAJ-8   $err = 'erreur ajx '.$_get['action'];
+AJ-12   if( $_get['action'] == 'refresh') // afficher les images crees sur le serveur
+AJ-33   if( $_get['action'] == 'display_galerie' && $_get['no_page']) // afficher les images crees sur le serveur
+AJ-41   if( $_get['action'] == 'delete') //  action=delete image
+AJ-70   if( $_get['action'] == 'view_comment' && $_get['image']) // action=view_comment 
+AJ-86   if( $_get['action'] == 'nb_img_page' && $_get['value']) // action=view_comment // ?action=nb_img_page'+'&value='+valeur;
+AJ-95   if( $_get['action'] == 'send_comment' && $_get['image']  && $_get['user_comment'] ) // action=send_comment 
+AJ-119   if( $_get['action'] == 'send_like' && $_get['image']  && $_get['user_like'] ) // action=send_like 
+AJ-138    display_galerie($no_page, $id) // $_get['action'] == 'display_galerie' && $_get['no_page']) || $source == 'add_like'
+js_camera.js   <b>js_camera.js</bJS-4     constructor(fond) // ***** charge la vidéo 
+JS-22       .then((mediastream)
+JS-25           video.onloadedmetadata = (e) { video.play(); };
+JS-27       .catch((err)
+JS-33     uploadex() // ***** transfert le fichier de la vidéo figé
+JS-42       xhr.upload.onprogress = (e) {
+JS-48       xhr.onload = () {
+JS-53     draw(id) // ***** fige la vidéo à l'écran
+JS-82       draw_file(id) // ***** affiche le fichier à l'écran
+JS-100           charge.onloadend = (e)
+JS-120       }// charge.onloadend = (e){   
+JS-153     changefond(id) // ***** sélectionne le fond
+JS-175      camera(id) // ***** réactive la caméra 
+JS-193       fajax( page_php, to_send, id_div, caller) // ***** échange les demandes avec le serveur 'ajax_usr.php' 
+JS-200       xhr.onreadystatechange =  (aevt)
+JS-223   refresh_usr(id, id_div) // ***** récupère le contenu des images
+JS-229   display_galerie(no_page, id_div) // ***** récupère le contenu des images
+JS-235   delete_img_usr(id_photo, id_div)  // *****  demande la suppression d'une image
+JS-250   view_comment(id_img, id_div) // ***** demande les commentaires d'une image
+JS-262   send_comment(user_comment, id_div)// ***** envoi le commentaire d'une image
+JS-275   send_like($name_img, user_like, id_div)// ***** envoi le like d'une image
+JS-296   refresh_usr_chk(reponse, id_div) // *****
+JS-302   display_galerie_chk(reponse, id_div) // *****
+JS-309   delete_img_usr_chk(reponse, id_div) // *****
+JS-316   view_comment_chk(reponse, id_div) // *****
+JS-321   send_comment_chk(reponse, id_div) // *****
+JS-328   send_like_chk(reponse, id_div) // *****
+JS-339       reader.onload = (event){
+JS-341           img.onload = (){

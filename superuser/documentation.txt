@@ -1,0 +1,11 @@
+le login se fait pas un formulaire adossé à une base de donnée
+le javascript se charge de gérer la vidéo la fusion locale des images et de transmettre le résultat au serveur PHP
+le javascript ajax gère en ajax vers le serveur la suppression des images
+
+la classe CSession gère l'identification et l'accès à la bas SQL
+la classe CInscription s'occupe des compte utilisateur
+la classe CForm construit les formulaires
+la classe CPrint affiche les formulaires et le contenu
+
+la base de donnée mysql, les champs sont en utf8
+ajax est utilisé pour la suppression des images par un user et pour l'affichage de la galerie

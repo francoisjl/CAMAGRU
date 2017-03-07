@@ -7,22 +7,25 @@ require_once('header.php');
 $content = '';
 print('<div id="main">');
 
-$CPrint = new CPrint();
+$CView = new CPrint();
 $CForm = new CForm;
+$CInscription = new CInscription();
+$CSession = new CSession();
+$error_field = '';
+
+$CView->titre('Réinitialisation Mot de passe');
 
 $aff_formulaire = 'yes';
 
 if (isset($_POST['Reinit']) == TRUE) // controle des champs
-	{
-		$TabFormChk["email"] = "Votre Mail";
+{
+	$TabFormChk["email"] = "Votre Mail";
+	$error_field = $CForm->InputTextChk($TabFormChk);
 
-		$error_field = $CForm->InputTextChk($TabFormChk);
-		
-	}
+}
 
 if (isset($_POST['Reinit']) == TRUE and !$error_field)
 {
-	$CSession = new CSession();
 	$user_exist = $CSession->user_exist($_POST['email']);
 
 	if ($user_exist != 'yes' and $user_exist != 'no') 
@@ -34,7 +37,7 @@ if (isset($_POST['Reinit']) == TRUE and !$error_field)
 
 	if ($user_exist == 'yes')
 	{
-		$CInscription = new CInscription();
+
 		$email = strip_tags($_POST['email']);
 		$action = $CInscription->send_reinitialisation($email);
 
@@ -48,16 +51,14 @@ if (isset($_POST['Reinit']) == TRUE and !$error_field)
 		else
 		{
 			$class_msg = 'msg_err';
-			$CPrint->content('Impossible d\'envoyer le mail de réinitialisation, contactez le support technique', $class_msg);
+			$CView->content('Impossible d\'envoyer le mail de réinitialisation, contactez le support technique', $class_msg);
 			$aff_formulaire = 'yes';
 			exit;
 		}
 	}
-
-
 }
 
-if ($content) $CPrint->content($content, $class_msg);
+if ($content) $CView->content($content, $class_msg);
 
 if ( $aff_formulaire == 'yes' )
 {
@@ -65,15 +66,13 @@ if ( $aff_formulaire == 'yes' )
 
 	$TabForm[] = $CForm->Form('pwd_reinit.php', 'Form', 'POST');
 	$TabForm[] = $CForm->InputLabel("Votre Mail * ", "LabelMail", "LabelMail");
-	$TabForm[] = $CForm->InputMail("Votre Mail ", "email", $_POST['email'], '*');
+	$TabForm[] = $CForm->InputMail("Votre Mail ", "email", '', '*');
 	$TabForm[] = $CForm->Submit(" Réinitialisation ", "Reinit");
 
-	$CPrint = new CPrint();
+	if ($error_field) $CView->content($error_field, 'msg_err');
 
-	if ($error_field) $CPrint->content($error_field, 'msg_err');
-
-	$CPrint->Form('Réinitialisation Mot de passe', $TabForm);
-	$CPrint->content("Renseignez votre email, pour recevoir un lien de réinitialisation", 'content');
+	$CView->Form('', $TabForm);
+	$CView->content("Renseignez votre email, pour recevoir un lien de réinitialisation", 'content');
 	//var_dump($TabForm);
 }
 
